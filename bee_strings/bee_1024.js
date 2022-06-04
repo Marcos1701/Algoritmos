@@ -3,12 +3,17 @@ const input = fs.readFileSync('stdin', 'utf-8')
 const entradas = input.split('\n')
 
 function main(){
-  const indice_max_para_leitura = entradas.length
+  const limite_de_frases_para_leitura = Number(entradas[0])
+  organizar_e_criptografar_frase(limite_de_frases_para_leitura)
+
+}
+
+function organizar_e_criptografar_frase(indice_max_para_leitura){
    
  let indice = 1
  let frase = entradas[indice]
     
-  while(indice < indice_max_para_leitura){
+  while(indice <= indice_max_para_leitura){
 
     // primeira passada (deslocar as letras da frase 
    // em três posições da tabela ASCII)
@@ -55,9 +60,10 @@ return frase_retorno
 
 function intervalo_aceito(caractere){
 
-//conferir se um caractere específico é uma letra(maiuscula ou minuscula)
+  //conferir se um caractere específico 
+ // é uma letra(maiuscula ou minuscula)
  const cod_caractere = caractere.charCodeAt(0)
-return ((65 <= cod_caractere && cod_caractere <= 90) ||(97 <= cod_caractere && cod_caractere <= 122))
+ return ((65 <= cod_caractere && cod_caractere <= 90) ||(97 <= cod_caractere && cod_caractere <= 122))
 
 }
 
@@ -72,15 +78,16 @@ function segunda_passada(frase){
         frase_invertida += frase[index]
         index--
    }
+
  return frase_invertida
 }
 
 
 function terceira_passada(frase){
 
-  let index_metade = (frase.length)/2
-  let indice_atual = 0
-  let nova_frase = ''
+ let index_metade = (frase.length)/2
+ let indice_atual = 0
+ let nova_frase = ''
 
    while(indice_atual < frase.length){
     
@@ -96,8 +103,8 @@ function terceira_passada(frase){
      }
       indice_atual++
    }
- return nova_frase
 
+ return nova_frase
 }
 
 

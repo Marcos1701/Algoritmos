@@ -1,5 +1,4 @@
-import fs from 'fs'
-const input = fs.readFileSync('stdin', 'utf-8')
+var input = require('fs').readFileSync('/dev/stdin', 'utf8');
 
 
 function main(){
@@ -21,10 +20,9 @@ function gerar_e_organizar_vetor(valor){
 
    for(let i = 0; i < vetor.length; i++){
     
-       if(elemento === valor){
+       if(elemento == valor){
            elemento = 0
         }
-
         vetor[i] = elemento
         elemento++
    }

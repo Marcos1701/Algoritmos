@@ -3,11 +3,11 @@ export const input = prompt()
 
 export function pegar_array(qtd){
 
-    const array = []
-   //const array = new Array(qtd)
+    //const array = []
+   const array = new Array(qtd)
 
    for(let i = 0; i < qtd; i++){
-       array.push(input(`${i + 1} : `))
+      array[i] = input(`${i + 1} : `)
    }
    return array
 }

@@ -9,56 +9,29 @@ export const input = prompt()
 
 
 
-export function gerar_matriz(ordem, n){
+export function gerar_matriz(){
 
-    const matriz = new Array(ordem)
+    const qtd_colunas = Number(input('Digite a qtd de colunas da matiz: '))
 
-    for(let i = 0; i < ordem; i++){
-        matriz[i] = new Array(n)
+    const qtd_linhas = Number(input('Digite a qtd de linhas da matriz: '))
+    const matriz = new Array(qtd_colunas)
+
+    for(let i = 0; i < qtd_colunas; i++){
+        matriz[i] = new Array(qtd_linhas)
     }
 
     return matriz
 }
 
-export function pegar_valores_matriz(matriz,num_linhas){
+export function pegar_valores_matriz(matriz){
 
     console.log('Digite os valores que serão inseridos na matriz: ')
     for(let i = 0; i < matriz.length; i++){
-        for(let k = 0; k < num_linhas; k++){
-            matriz[i][j] = input(`coluna : ${i + 1}, linha ${k + 1} : `)
+        for(let k = 0; k < matriz[i].length; k++){
+            matriz[i][k] = Number(input(`coluna : ${i + 1}, linha ${k + 1} : `))
         }
     }
     return matriz
-}
-
-
-export function ordenar_array_em_ord_crescente(vetor) {
-
-    const tamanho = vetor.length - 1
-    let valor_cont = false
-    let aux
-    let k = 0
-
-    for (let i = 0; i < tamanho; i++) {
-        valor_cont = false
-
-        for (let n = 0; n < tamanho - k; n++) {
-            if (vetor[n] > vetor[n + 1]) {
-                valor_cont = true
-                aux = vetor[n]
-                vetor[n] = vetor[n + 1]
-                vetor[n + 1] = aux
-
-            }
-        }
-
-        if (!valor_cont) {
-            break
-        }
-        k++
-    }
-
-    return vetor
 }
 
 

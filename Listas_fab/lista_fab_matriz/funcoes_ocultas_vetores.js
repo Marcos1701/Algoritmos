@@ -12,6 +12,36 @@ export function pegar_array(qtd){
    return array
 }
 
+export function ordenar_array_em_ord_crescente(vetor) {
+
+    const tamanho = vetor.length - 1
+    let valor_cont = false
+    let aux
+    let k = 0
+
+    for (let i = 0; i < tamanho; i++) {
+        valor_cont = false
+
+        for (let n = 0; n < tamanho - k; n++) {
+            if (vetor[n] > vetor[n + 1]) {
+                valor_cont = true
+                aux = vetor[n]
+                vetor[n] = vetor[n + 1]
+                vetor[n + 1] = aux
+
+            }
+        }
+
+        if (!valor_cont) {
+            break
+        }
+        k++
+    }
+
+    return vetor
+}
+
+
 export function map_vetor(funcao, vetor){
 
     const new_array = new Array(vetor.length)

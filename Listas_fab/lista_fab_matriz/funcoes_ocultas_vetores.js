@@ -12,10 +12,42 @@ export function pegar_array(qtd){
    return array
 }
 
-export function ordenar_array_em_ord_crescente(vetor) {
+export function num_ocorrencias_valor(valor,colecao){
+
+    let contador = 0
+    for(let i = 0; i < colecao.length; i++){
+        if(valor === colecao[i]){
+            contador++
+        }
+    }
+
+    return (contador > 1)
+}
+
+
+export function somatorio_arrays(array_a, array_b, qtd){
+
+    //const  array_c = []
+    const  array_c = new Array(qtd * 2)
+
+    let i_b = 0
+    for(let i = 0; i < array_c.length;i++){
+        if(i < qtd){
+         array_c[i] = array_a[i]
+        }else{
+            array_c[i] = array_b[i_b]
+            i_b++
+        }
+    }
+
+    return array_c
+}
+
+export function ordenar_array(vetor, org = 'cresc') {
 
     const tamanho = vetor.length - 1
     let valor_cont = false
+    const funcao_auxiliar = org == 'cresc' ? eh_maior : eh_menor
     let aux
     let k = 0
 
@@ -23,7 +55,7 @@ export function ordenar_array_em_ord_crescente(vetor) {
         valor_cont = false
 
         for (let n = 0; n < tamanho - k; n++) {
-            if (vetor[n] > vetor[n + 1]) {
+            if (funcao_auxiliar(vetor[n], vetor[n + 1])) {
                 valor_cont = true
                 aux = vetor[n]
                 vetor[n] = vetor[n + 1]
@@ -41,6 +73,13 @@ export function ordenar_array_em_ord_crescente(vetor) {
     return vetor
 }
 
+function eh_maior(valor_1, valor_2){
+    return valor_1 > valor_2
+}
+
+function eh_menor(valor_1, valor_2){
+    return valor_1 < valor_2
+}
 
 export function map_vetor(funcao, vetor){
 
